@@ -1,6 +1,5 @@
 package com.alikian.service;
 
-import com.alikian.dto.AlbumDto;
 import com.alikian.dto.PhotoDto;
 
 import java.util.List;
@@ -10,4 +9,9 @@ import java.util.List;
  */
 public interface PhotoService {
     void saveAll(List<PhotoDto> photoDtos);
+
+    PhotoDto getOne(Integer userId);
+    PhotoDto saveOrUpdate(PhotoDto userDto);
+    void delete(Integer userId);
+
 }

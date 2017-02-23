@@ -1,12 +1,8 @@
 package com.alikian.service;
 
-import com.alikian.domain.Album;
 import com.alikian.domain.Photo;
-import com.alikian.dto.AlbumDto;
 import com.alikian.dto.PhotoDto;
-import com.alikian.orika.mapper.AlbumMapper;
 import com.alikian.orika.mapper.PhotoMapper;
-import com.alikian.repository.AlbumRepository;
 import com.alikian.repository.PhotoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,4 +30,25 @@ public class PhotoServiceImp implements PhotoService {
 
         photoRepository.save(photos);
     }
+
+    public PhotoDto getOne(Integer albumId) {
+        Photo photo = photoRepository.findOne(albumId);
+        PhotoDto photoDto = photoMapper.map(photo, PhotoDto.class);
+
+        return photoDto;
+    }
+
+    public PhotoDto saveOrUpdate(PhotoDto photoDto) {
+        Photo photo = photoMapper.map(photoDto, Photo.class);
+
+        Photo updatedPhoto = photoRepository.save(photo);
+
+        PhotoDto updatedPhotoDto = photoMapper.map(updatedPhoto, PhotoDto.class);
+        return updatedPhotoDto;
+    }
+
+    public void delete(Integer photoId) {
+        photoRepository.delete(photoId);
+    }
+
 }

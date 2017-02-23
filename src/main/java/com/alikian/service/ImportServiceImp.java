@@ -8,6 +8,8 @@ import com.alikian.repository.PhotoRepository;
 import com.alikian.repository.UserRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -24,7 +26,8 @@ import java.util.List;
  */
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
-public class ImportServiceImp  implements ImportService{
+public class ImportServiceImp implements ImportService {
+    private final Logger logger = LoggerFactory.getLogger(ImportService.class);
 
     @Autowired
     UserRepository userRepository;
@@ -51,28 +54,35 @@ public class ImportServiceImp  implements ImportService{
         photoRepository.deleteAll();
         albumRepository.deleteAll();
         userRepository.deleteAll();
+        logger.info("All Tables wiped out");
 
 
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             BufferedReader userStream = getStream("https://jsonplaceholder.typicode.com/users");
-            List<UserDto> userDtos = objectMapper.readValue(userStream, new TypeReference<List<UserDto>>() {});
+            List<UserDto> userDtos = objectMapper.readValue(userStream, new TypeReference<List<UserDto>>() {
+            });
             userStream.close();
-            System.out.println("Users loaded: "+userDtos.size());
+            logger.info("Users loaded {}", userDtos.size());
 
             BufferedReader albumStream = getStream("https://jsonplaceholder.typicode.com/albums");
-            List<AlbumDto> albumDtos = objectMapper.readValue(albumStream, new TypeReference<List<AlbumDto>>() {});
+            List<AlbumDto> albumDtos = objectMapper.readValue(albumStream, new TypeReference<List<AlbumDto>>() {
+            });
             albumStream.close();
-            System.out.println("Album loaded: "+albumDtos.size());
+            logger.info("Album loaded {}", albumDtos.size());
 
             BufferedReader photosStream = getStream("https://jsonplaceholder.typicode.com/photos");
-            List<PhotoDto> photoDtos = objectMapper.readValue(photosStream, new TypeReference<List<PhotoDto>>() {});
+            List<PhotoDto> photoDtos = objectMapper.readValue(photosStream, new TypeReference<List<PhotoDto>>() {
+            });
             photosStream.close();
-            System.out.println("Photo loaded: "+photoDtos.size());
+            logger.info("Photo loaded {}", photoDtos.size());
 
             userService.saveAll(userDtos);
+            logger.info("Users records inserted");
             albumService.saveAll(albumDtos);
+            logger.info("Albums records inserted");
             photoService.saveAll(photoDtos);
+            logger.info("Photo records inserted");
 
         } catch (Exception e) {
             e.printStackTrace();

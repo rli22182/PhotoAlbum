@@ -32,10 +32,27 @@ public class AlbumServiceImp implements AlbumService {
     public void saveAll(List<AlbumDto> albumDtos) {
         List<Album> albums = albumMapper.mapAsList(albumDtos, Album.class);
 
-//        albums.forEach(album -> {
-//            System.out.println("Album: "+album.getId());
-//            albumRepository.save(album);
-//        });
         albumRepository.save(albums);
     }
+
+    public AlbumDto getOne(Integer albumId) {
+        Album album = albumRepository.findOne(albumId);
+        AlbumDto albumDto = albumMapper.map(album, AlbumDto.class);
+
+        return albumDto;
+    }
+
+    public AlbumDto saveOrUpdate(AlbumDto albumDto) {
+        Album album = albumMapper.map(albumDto, Album.class);
+
+        Album updatedAlbum = albumRepository.save(album);
+
+        AlbumDto updatedAlbumDto = albumMapper.map(updatedAlbum, AlbumDto.class);
+        return updatedAlbumDto;
+    }
+
+    public void delete(Integer albumId) {
+        albumRepository.delete(albumId);
+    }
+
 }
