@@ -49,7 +49,7 @@ public class ImportServiceImp implements ImportService {
 
     @Override
     public void importData() {
-        System.out.println("ContextStartedEvent Received " + userRepository.getClass());
+        logger.info("Wiping out tables");
 
         photoRepository.deleteAll();
         albumRepository.deleteAll();

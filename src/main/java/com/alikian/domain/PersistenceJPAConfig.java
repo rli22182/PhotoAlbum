@@ -39,7 +39,7 @@ public class PersistenceJPAConfig{
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/photo_album");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/photo_album?verifyServerCertificate=false&useSSL=true");
         dataSource.setUsername( "photo" );
         dataSource.setPassword( "album123" );
         return dataSource;
