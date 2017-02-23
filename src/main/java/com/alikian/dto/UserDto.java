@@ -7,24 +7,38 @@ import javax.persistence.Column;
  */
 public class UserDto {
 
+    public UserDto(){
+
+    }
+
     private Long id;
 
     private String name;
     private String username;
     private String email;
+    private String phone;
+    private String website;
 
     private Address address;
 
     private Company company;
 
     class Address {
+        public Address(){
+
+        }
+
         private String street;
         private String suite;
         private String city;
+        private String zipcode;
 
         private Geo geo;
 
         class Geo {
+            public Geo(){
+
+            }
             private Double lat;
             private Double lng;
 
@@ -76,9 +90,21 @@ public class UserDto {
         public void setGeo(Geo geo) {
             this.geo = geo;
         }
+
+        public String getZipcode() {
+            return zipcode;
+        }
+
+        public void setZipcode(String zipcode) {
+            this.zipcode = zipcode;
+        }
     }
 
     class Company{
+        public Company(){
+
+        }
+
         private String name;
         private String catchPhrase;
         private String bs;
@@ -154,5 +180,21 @@ public class UserDto {
 
     public void setCompany(Company company) {
         this.company = company;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
     }
 }
