@@ -8,6 +8,8 @@ import com.alikian.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created by Ali on 2/21/2017.
  */
@@ -16,6 +18,11 @@ public class UsersController {
 
     @Autowired
     UserService userService;
+
+    @RequestMapping(value = "/users",method = RequestMethod.GET)
+    public List<UserDto> getAll() {
+        return userService.getAll();
+    }
 
     @RequestMapping(value = "/users/{id}",method = RequestMethod.GET)
     public UserDto getOne(@PathVariable("id") Integer userId) {

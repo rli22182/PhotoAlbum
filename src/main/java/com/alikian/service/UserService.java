@@ -9,6 +9,7 @@ import java.util.List;
  */
 public interface UserService {
     void saveAll(List<UserDto> userDtos);
+    List<UserDto> getAll();
 
     UserDto getOne(Integer userId);
     UserDto saveOrUpdate(UserDto userDto);

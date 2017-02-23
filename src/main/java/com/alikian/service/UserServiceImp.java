@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,13 +33,21 @@ public class UserServiceImp implements UserService {
     }
 
     public UserDto getOne(Integer userId) {
-        User user=userRepository.findOne(userId);
+        User user = userRepository.findOne(userId);
         UserDto userDto = userMapper.map(user, UserDto.class);
 
         return userDto;
     }
 
-    public UserDto saveOrUpdate(UserDto userDto){
+    public List<UserDto> getAll() {
+        Iterable<User> userIterable = userRepository.findAll();
+        List<User> users = new ArrayList<>();
+        userIterable.forEach(users::add);
+        List<UserDto> userDtos = userMapper.mapAsList(users, UserDto.class);
+        return userDtos;
+    }
+
+    public UserDto saveOrUpdate(UserDto userDto) {
         User user = userMapper.map(userDto, User.class);
 
         User updatedUser = userRepository.save(user);
@@ -47,7 +56,7 @@ public class UserServiceImp implements UserService {
         return updatedUserDto;
     }
 
-    public void delete(Integer userId){
+    public void delete(Integer userId) {
         userRepository.delete(userId);
     }
 
