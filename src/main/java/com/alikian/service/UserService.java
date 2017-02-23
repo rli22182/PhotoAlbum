@@ -9,4 +9,8 @@ import java.util.List;
  */
 public interface UserService {
     void saveAll(List<UserDto> userDtos);
+
+    UserDto getOne(Integer userId);
+    UserDto saveOrUpdate(UserDto userDto);
+    void delete(Integer userId);
 }

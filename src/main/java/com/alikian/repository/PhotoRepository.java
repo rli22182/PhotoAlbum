@@ -7,5 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 /**
  * Created by Ali on 2/21/2017.
  */
-public interface PhotoRepository extends CrudRepository<Photo, Long> {
+public interface PhotoRepository extends CrudRepository<Photo, Integer> {
 }

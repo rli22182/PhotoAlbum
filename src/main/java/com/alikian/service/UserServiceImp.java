@@ -30,4 +30,25 @@ public class UserServiceImp implements UserService {
 
         userRepository.save(users);
     }
+
+    public UserDto getOne(Integer userId) {
+        User user=userRepository.findOne(userId);
+        UserDto userDto = userMapper.map(user, UserDto.class);
+
+        return userDto;
+    }
+
+    public UserDto saveOrUpdate(UserDto userDto){
+        User user = userMapper.map(userDto, User.class);
+
+        User updatedUser = userRepository.save(user);
+
+        UserDto updatedUserDto = userMapper.map(updatedUser, UserDto.class);
+        return updatedUserDto;
+    }
+
+    public void delete(Integer userId){
+        userRepository.delete(userId);
+    }
+
 }
