@@ -4,15 +4,15 @@ package com.alikian.dto;
  * Created by Ali on 2/21/2017.
  */
 public class AlbumDto {
-    private Long id;
+    private Integer id;
     private String title;
-    private Long userId;
+    private Integer userId;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -24,11 +24,11 @@ public class AlbumDto {
         this.title = title;
     }
 
-    public Long getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 }

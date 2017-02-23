@@ -1,20 +1,17 @@
-package com.alikian.domain;
+package com.alikian.dto;
 
-import javax.persistence.*;
+import com.alikian.domain.Album;
+
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
- * Created by Ali on 2/21/2017.
+ * Created by akian on 2/22/17.
  */
-@Entity(name = "photo")
-public class Photo {
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+public class PhotoDto {
     private Integer id;
-
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="album_id")
-    private Album album;
-
+    private Integer albumId;
     private String title;
     private String url;
     private String thumbnailUrl;
@@ -27,12 +24,12 @@ public class Photo {
         this.id = id;
     }
 
-    public Album getAlbum() {
-        return album;
+    public Integer getAlbumId() {
+        return albumId;
     }
 
-    public void setAlbum(Album album) {
-        this.album = album;
+    public void setAlbumId(Integer albumId) {
+        this.albumId = albumId;
     }
 
     public String getTitle() {

@@ -11,7 +11,7 @@ public class UserDto {
 
     }
 
-    private Long id;
+    private Integer id;
 
     private String name;
     private String username;
@@ -23,7 +23,7 @@ public class UserDto {
 
     private Company company;
 
-    class Address {
+    public class Address {
         public Address(){
 
         }
@@ -35,7 +35,7 @@ public class UserDto {
 
         private Geo geo;
 
-        class Geo {
+        public class Geo {
             public Geo(){
 
             }
@@ -100,7 +100,7 @@ public class UserDto {
         }
     }
 
-    class Company{
+    public class Company{
         public Company(){
 
         }
@@ -134,11 +134,11 @@ public class UserDto {
         }
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -10,8 +10,8 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Integer id;
 
     @OneToMany(mappedBy="user")
     private List<Album> albums;
@@ -47,11 +47,11 @@ public class User {
     @Column(length = 100)
     private String companyBs;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

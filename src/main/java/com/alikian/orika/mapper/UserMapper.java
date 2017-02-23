@@ -16,6 +16,7 @@ public class UserMapper extends ConfigurableMapper {
                 .field("addressStreet", "address.street")
                 .field("addressSuite", "address.suite")
                 .field("addressCity", "address.city")
+                .field("addressZipcode", "address.zipcode")
                 .field("addressGeoLat", "address.geo.lat")
                 .field("addressGeoLng", "address.geo.lng")
                 .field("companyName", "company.name")
