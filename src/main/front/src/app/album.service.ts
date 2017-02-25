@@ -10,14 +10,14 @@ import {User} from './user';
 @Injectable()
 export class UserService {
     // URL to web api
-    private usersUrl = 'http://localhost:8090/api/users';
-    // private usersUrl = '/api/users';
+    private usersUrl = 'http://localhost:8090/api/users/{userId}/albums';
+    // private albumsUrl = '/api/users/{userId}/albums';
 
     constructor(private http: Http) {
     }
 
-    getUsers(): Promise<User[]> {
-        return this.http.get(this.usersUrl)
+    getUserAlbums(userId: string): Promise<User[]> {
+        return this.http.get(this.albumsUrl.replace(/userId/gi,userId))
             .toPromise()
             .then(this.extractData)
             .catch(this.handleError);

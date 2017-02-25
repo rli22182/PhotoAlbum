@@ -1,15 +1,14 @@
-export class User {
-    constructor(public id: number,
-                public name: string,
-                public username: string,
-                public email: string,
-                public phone: string,
-                public website: string,
-                public address: Address) {
-    }
+export interface User {
+    id: number;
+    name: string;
+    username: string;
+    phone: string;
+    email: string;
+    website: string;
+    address: Address
 }
-export class Address {
-    constructor(public street: string,
-                public suite: string,
-                public city: string)
+export interface Address {
+    street: string;
+    suite: string;
+    city: string
 }

@@ -5,7 +5,10 @@ import com.alikian.dto.UserDto;
 import com.alikian.service.AlbumService;
 import com.alikian.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
 
@@ -34,8 +37,12 @@ public class UsersController {
     }
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public UserDto getOne(@PathVariable("id") Integer userId) {
-        return userService.getOne(userId);
+    public ResponseEntity<UserDto> getOne(@PathVariable("id") Integer userId) {
+        UserDto userDto = userService.getOne(userId);
+        if(userDto == null){
+            return new ResponseEntity<UserDto>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<UserDto>(userDto, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
