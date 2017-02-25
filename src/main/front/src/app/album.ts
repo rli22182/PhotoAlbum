@@ -1,4 +1,4 @@
-export class Photo {
+export class Album {
     id: number;
     albumId: number
 }

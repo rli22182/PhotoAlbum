@@ -8,7 +8,7 @@ import 'rxjs/add/operator/toPromise';
 import {User} from './user';
 
 @Injectable()
-export class UserService {
+export class AlbumService {
     // URL to web api
     private albumsUrl = 'http://localhost:8090/api/users/userId/albums';
     // private albumsUrl = '/api/users/{userId}/albums';
