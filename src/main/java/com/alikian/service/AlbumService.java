@@ -1,6 +1,7 @@
 package com.alikian.service;
 
 import com.alikian.dto.AlbumDto;
+import com.alikian.dto.UserDto;
 
 import java.util.List;
 
@@ -9,6 +10,7 @@ import java.util.List;
  */
 public interface AlbumService {
     void saveAll(List<AlbumDto> albumDtos);
+    List<AlbumDto> getAll();
 
     AlbumDto getOne(Integer userId);
 
@@ -16,4 +18,5 @@ public interface AlbumService {
 
     void delete(Integer userId);
 
+    List<AlbumDto> getAlbumsForUser(Integer userId);
 }

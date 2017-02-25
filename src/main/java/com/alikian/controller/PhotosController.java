@@ -10,27 +10,28 @@ import org.springframework.web.bind.annotation.*;
  * Created by Ali on 2/21/2017.
  */
 @RestController
+@RequestMapping(value = Path.API+"/photos")
 public class PhotosController {
 
     @Autowired
     PhotoService photoService;
 
-    @RequestMapping(value = "/photos/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     public PhotoDto getOne(@PathVariable("id") Integer userId) {
         return photoService.getOne(userId);
     }
 
-    @RequestMapping(value = "/photos",method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.PUT)
     public PhotoDto update(@RequestBody  PhotoDto photoDto) {
         return photoService.saveOrUpdate(photoDto);
     }
 
-    @RequestMapping(value = "/photos",method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public PhotoDto save(@RequestBody  PhotoDto photoDto) {
         return photoService.saveOrUpdate(photoDto);
     }
 
-    @RequestMapping(value = "/photos/{id}",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     public void delete(@PathVariable("id") Integer id) {
         photoService.delete(id);
     }

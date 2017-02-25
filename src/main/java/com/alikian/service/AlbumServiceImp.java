@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,6 +36,14 @@ public class AlbumServiceImp implements AlbumService {
         albumRepository.save(albums);
     }
 
+    public List<AlbumDto> getAll() {
+        Iterable<Album> albumIterable = albumRepository.findAll();
+        List<Album> albums = new ArrayList<>();
+        albumIterable.forEach(albums::add);
+        List<AlbumDto> albumDtos = albumMapper.mapAsList(albums, AlbumDto.class);
+        return albumDtos;
+    }
+
     public AlbumDto getOne(Integer albumId) {
         Album album = albumRepository.findOne(albumId);
         AlbumDto albumDto = albumMapper.map(album, AlbumDto.class);
@@ -54,5 +63,13 @@ public class AlbumServiceImp implements AlbumService {
     public void delete(Integer albumId) {
         albumRepository.delete(albumId);
     }
+
+    @Override
+    public List<AlbumDto> getAlbumsForUser(Integer userId) {
+        List<Album> albumList =  albumRepository.findByUser_id(userId);
+        List<AlbumDto> albumDtos = albumMapper.mapAsList(albumList, AlbumDto.class);
+        return albumDtos;
+    }
+
 
 }
