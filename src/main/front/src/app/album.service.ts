@@ -10,7 +10,7 @@ import {User} from './user';
 @Injectable()
 export class UserService {
     // URL to web api
-    private usersUrl = 'http://localhost:8090/api/users/{userId}/albums';
+    private albumsUrl = 'http://localhost:8090/api/users/userId/albums';
     // private albumsUrl = '/api/users/{userId}/albums';
 
     constructor(private http: Http) {
