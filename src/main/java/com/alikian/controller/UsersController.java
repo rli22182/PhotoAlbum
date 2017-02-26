@@ -32,7 +32,7 @@ public class UsersController {
     }
 
     @RequestMapping(value = "/{id}/albums",method = RequestMethod.GET)
-    public List<AlbumDto> getUserAlbums(Integer userId){
+    public List<AlbumDto> getUserAlbums(@PathVariable("id")Integer userId){
         return albumService.getAlbumsForUser(userId);
     }
 

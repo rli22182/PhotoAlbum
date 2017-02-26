@@ -1,6 +1,7 @@
 package com.alikian.controller;
 
 import com.alikian.dto.AlbumDto;
+import com.alikian.dto.PhotoDto;
 import com.alikian.dto.UserDto;
 import com.alikian.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,11 @@ public class AlbumsController {
     @RequestMapping(method = RequestMethod.GET)
     public List<AlbumDto> getAll() {
         return albumService.getAll();
+    }
+
+    @RequestMapping(value = "/{id}/photos",method = RequestMethod.GET)
+    public List<PhotoDto> getUserAlbums(@PathVariable("id")Integer albumId){
+        return albumService.getPhotosForAlbum(albumId);
     }
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)

@@ -1,0 +1,42 @@
+<h2 *ngIf="user"> Albums For User: {{user.name}}</h2>
+<div style="width: 100%; overflow: hidden;">
+    <div style="width: 400px; float: left;">
+        <ul class="albums">
+            <li *ngFor="let album of albums"
+                [class.selected]="album === selectedAlbum"
+                (click)="onSelectAlbum(album)">
+
+                <!-- each album goes here -->
+                <span class="badge">{{album.id}}</span> {{album.title}}
+            </li>
+        </ul>
+    </div>
+    <div style="margin-left: 420px;" *ngIf="selectedAlbum">
+        <h2>{{selectedAlbum.name}}</h2>
+        <div><label>Album id: </label>{{selectedAlbum.id}}</div>
+        <div>
+            <label><h4>Album Title: {{selectedAlbum.title}}</h4> </label>
+        </div>
+        <h4>Photos:</h4>
+        <nav class="photos">
+        <ul class="photos">
+            <li *ngFor="let photo of photos"
+                [class.selected]="photo === selectedPhoto"
+                (click)="onSelectPhoto(photo)">
+
+                <!-- img src="{{photo.thumbnailUrl}}" alt="Smiley face" height="60" width="60" -->
+                <!-- each album goes here -->
+                {{photo.title}}
+            </li>
+        </ul>
+        </nav>
+    </div>
+    <div style="position: absolute; top: 190px; left: 800px;" *ngIf="selectedPhoto">
+        <input type="button" value="Delete Selected Photo" (click)="onDeleteSelectPhoto()"/>
+        <h4>Photo Title{{selectedPhoto.title}}</h4>
+        <h4>Thumbnail:</h4>
+        <img src="{{selectedPhoto.thumbnailUrl}}">
+        <h4>Image:</h4>
+        <img src="{{selectedPhoto.url}}" width="300" height="300">
+    </div>
+</div>

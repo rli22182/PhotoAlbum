@@ -9,14 +9,14 @@ h1 {
     color: white;
 }
 
-.users {
+.albums {
     margin: 0 0 2em 0;
     list-style-type: none;
     padding: 0;
-    width: 15em;
+    width: 25em;
 }
 
-.users li {
+.albums li {
     cursor: pointer;
     position: relative;
     left: 0;
@@ -27,23 +27,23 @@ h1 {
     border-radius: 4px;
 }
 
-.users li.selected:hover {
+.albums li.selected:hover {
     background-color: #BBD8DC !important;
     color: white;
 }
 
-.users li:hover {
+.albums li:hover {
     color: #607D8B;
     background-color: #DDD;
     left: .1em;
 }
 
-.users .text {
+.albums .text {
     position: relative;
     top: -3px;
 }
 
-.users .badge {
+.albums .badge {
     display: inline-block;
     font-size: small;
     color: white;
@@ -74,7 +74,7 @@ h1 {
     padding: 20px;
     text-align: center;
     color: #eee;
-    max-height: 60px;
+    max-height: 80px;
     min-width: 80px;
     background-color: #607D8B;
     border-radius: 2px;
@@ -83,4 +83,55 @@ h1 {
     background-color: #EEE;
     cursor: pointer;
     color: #607d8b;
+}
+
+
+.photos {
+    margin: 0 0 2em 0;
+    list-style-type: none;
+    padding: 0;
+    width: 20em;
+}
+
+.photos li {
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    background-color: #EEE;
+    margin: .5em;
+    padding: .3em .3em;
+    height: 3em;
+    border-radius: 4px;
+}
+
+.photos li.selected:hover {
+    background-color: #BBD8DC !important;
+    color: white;
+}
+
+.photos li:hover {
+    color: #607D8B;
+    background-color: #DDD;
+    left: .1em;
+}
+
+.photos .text {
+    position: relative;
+    top: -3px;
+}
+
+.photos .badge {
+    display: inline-block;
+    font-size: small;
+    color: white;
+    padding: 0.8em 0.7em 0 0.7em;
+    background-color: #607D8B;
+    line-height: 1em;
+    position: relative;
+    left: -1px;
+    top: -4px;
+    height: 3em;
+    margin-right: .8em;
+    border-radius: 4px 0 0 4px;
+    width: 8px;
 }

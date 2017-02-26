@@ -1,12 +1,16 @@
 package com.alikian.service;
 
 import com.alikian.domain.Album;
+import com.alikian.domain.Photo;
 import com.alikian.domain.User;
 import com.alikian.dto.AlbumDto;
+import com.alikian.dto.PhotoDto;
 import com.alikian.dto.UserDto;
 import com.alikian.orika.mapper.AlbumMapper;
+import com.alikian.orika.mapper.PhotoMapper;
 import com.alikian.orika.mapper.UserMapper;
 import com.alikian.repository.AlbumRepository;
+import com.alikian.repository.PhotoRepository;
 import com.alikian.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +31,13 @@ public class AlbumServiceImp implements AlbumService {
     AlbumRepository albumRepository;
 
     @Autowired
+    PhotoRepository photoRepository;
+
+    @Autowired
     AlbumMapper albumMapper;
+
+    @Autowired
+    PhotoMapper photoMapper;
 
     @Override
     public void saveAll(List<AlbumDto> albumDtos) {
@@ -69,6 +79,12 @@ public class AlbumServiceImp implements AlbumService {
         List<Album> albumList =  albumRepository.findByUser_id(userId);
         List<AlbumDto> albumDtos = albumMapper.mapAsList(albumList, AlbumDto.class);
         return albumDtos;
+    }
+
+    @Override
+    public List<PhotoDto> getPhotosForAlbum(Integer albumId) {
+        List<Photo> photos = photoRepository.findByAlbum_id(albumId);
+        return photoMapper.mapAsList(photos,PhotoDto.class);
     }
 
 

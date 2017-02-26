@@ -1,6 +1,7 @@
 package com.alikian.service;
 
 import com.alikian.dto.AlbumDto;
+import com.alikian.dto.PhotoDto;
 import com.alikian.dto.UserDto;
 
 import java.util.List;
@@ -19,4 +20,6 @@ public interface AlbumService {
     void delete(Integer userId);
 
     List<AlbumDto> getAlbumsForUser(Integer userId);
+
+    List<PhotoDto> getPhotosForAlbum(Integer albumId);
 }
