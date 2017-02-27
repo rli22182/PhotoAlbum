@@ -6,7 +6,7 @@ database: photo_album <br/>
 username: photo <br/>
 password: album123
 
-Use following command to build jar file: <br/>
+Use following command to build jar file (maven 3 or higher required): <br/>
 mvn clean install
 
 Use following command to run: <br/>
