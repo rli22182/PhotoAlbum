@@ -31,12 +31,18 @@
         </ul>
         </nav>
     </div>
-    <div style="position: absolute; top: 190px; left: 800px;" *ngIf="selectedPhoto">
-        <input type="button" value="Delete Selected Photo" (click)="onDeleteSelectPhoto()"/>
-        <h4>Photo Title: {{selectedPhoto.title}}</h4>
-        <h4>Thumbnail:</h4>
-        <img src="{{selectedPhoto.thumbnailUrl}}">
-        <h4>Image:</h4>
-        <img src="{{selectedPhoto.url}}" width="300" height="300">
+    <div style="position: absolute; top: 230px; left: 800px;" *ngIf="selectedPhoto">
+        <div class="card">
+            <img src="{{selectedPhoto.url}}" width="300" height="300">
+            <div class="container">
+                <h4><b>Photo Title</b> </h4>
+                <p>{{selectedPhoto.title}} </p>
+                <input type="button" value="Delete" (click)="onDeleteSelectPhoto()"/>
+                <br/><br/>
+            </div>
+        </div>
+
     </div>
+
+
 </div>
