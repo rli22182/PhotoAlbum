@@ -6,8 +6,6 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class BaseService {
-    // protected baseUrl = 'http://localhost:8090';
-    // protected baseUrl = '';
     protected baseUrl = environment.baseApiUrl;
 
     constructor(protected http: Http) {
