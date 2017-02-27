@@ -2,14 +2,18 @@
 
 Database Server: MySQL <br/>
 
-database: photo_album <br/>
-username: photo <br/>
+database: photo_album 
+
+username: photo 
+
 password: album123
 
-Use following command to build jar file (maven 3 or higher required): <br/>
+Use following command to build jar file (maven 3 or higher required): 
+
 mvn clean install
 
-Use following command to run: <br/>
+Use following command to run: 
+
 java -jar target/photoalbum-0.0.1-SNAPSHOT.jar
 
 At startup application will create tables and also download data
