@@ -14,3 +14,4 @@ At startup application will create tables and also download data
 
 Open browser at:
 http://localhost:8080/
+
