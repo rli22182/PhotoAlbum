@@ -33,7 +33,7 @@
     </div>
     <div style="position: absolute; top: 190px; left: 800px;" *ngIf="selectedPhoto">
         <input type="button" value="Delete Selected Photo" (click)="onDeleteSelectPhoto()"/>
-        <h4>Photo Title{{selectedPhoto.title}}</h4>
+        <h4>Photo Title: {{selectedPhoto.title}}</h4>
         <h4>Thumbnail:</h4>
         <img src="{{selectedPhoto.thumbnailUrl}}">
         <h4>Image:</h4>
