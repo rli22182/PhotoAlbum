@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by Ali on 2/21/2017.
  */
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RestController
 @RequestMapping(value = Path.API+"/users")
 public class UsersController {

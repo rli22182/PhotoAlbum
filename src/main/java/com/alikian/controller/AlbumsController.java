@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Ali on 2/21/2017.
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RequestMapping(value = Path.API+"/albums")
 public class AlbumsController {
 
