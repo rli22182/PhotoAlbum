@@ -1,18 +1,8 @@
 #Photo Album
 
-## Database
-
-Database Server: MySQL on localhost port 3306
-
-database: photo_album 
-
-username: photo
-
-password: album123
-
 ## Build
 Use following command to build jar file (maven 3 or higher required):
- 
+
 mvn clean install
 
 ## run
