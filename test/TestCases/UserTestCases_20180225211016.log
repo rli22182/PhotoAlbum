@@ -1,0 +1,56 @@
+[02/25/2018 21:10:16][TestCase][INFO]1. Create new user without specifying ID, let the system set user ID
+[02/25/2018 21:10:17][usersCreate][SUCCESS]Call API Succeeded
+[02/25/2018 21:10:17][TestCase][SUCCESS]User ID 11 created.
+
+[02/25/2018 21:10:17][TestCase][INFO]2. Delete an existing user with no album
+[02/25/2018 21:10:17][usersDeleteByID][SUCCESS]Call API Succeeded
+[02/25/2018 21:10:17][usersGetAll][SUCCESS]Call API Succeeded
+[02/25/2018 21:10:17][TestCase][SUCCESS]User ID 11 deleted.
+
+[02/25/2018 21:10:17][TestCase][INFO]3. Create new user with specific ID, and the ID does not exist in system
+[02/25/2018 21:10:17][usersCreate][SUCCESS]Call API Succeeded
+[02/25/2018 21:10:17][responseCheck][ERROR]id value 12 in response does not match the value 11 in request.
+[02/25/2018 21:10:17][TestCase][ERROR]Response check returned error.
+
+[02/25/2018 21:10:17][TestCase][INFO]4. Create new user with specific ID, and the ID already exists in system
+[02/25/2018 21:10:17][usersGetAll][SUCCESS]Call API Succeeded
+[02/25/2018 21:10:17][usersCreate][SUCCESS]Call API Succeeded
+[02/25/2018 21:10:17][TestCase][ERROR]User ID 10 already exists, but API did not return error.
+
+[02/25/2018 21:10:17][TestCase][INFO]5. Find an existing user with albums
+[02/25/2018 21:10:17][TestCase][SUCCESS]User ID 8 has 10 albums.
+
+[02/25/2018 21:10:17][TestCase][INFO]6. Delete an existing user with albums
+[02/25/2018 21:10:18][usersDeleteByID][ERROR]Call API failed
+Error while calling url: http://10.27.18.140:8080/api/users/8
+Error Code: 500
+Response: {"timestamp":1519610994233,"status":500,"error":"Internal Server Error","exception":"org.springframework.dao.DataIntegrityViolationException","message":"could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement","path":"/api/users/8"}
+[02/25/2018 21:10:18][TestCase][SUCCESS]User ID 8 with albums cannot be deleted.
+
+[02/25/2018 21:10:18][TestCase][INFO]7. Get a non-existing user
+[02/25/2018 21:10:18][usersGetAll][SUCCESS]Call API Succeeded
+[02/25/2018 21:10:18][usersGetOne][ERROR]Call API failed
+Error while calling url: http://10.27.18.140:8080/api/users/13
+Error Code: 404
+Response: 
+[02/25/2018 21:10:18][TestCase][SUCCESS]Cannot find User ID 13.
+
+[02/25/2018 21:10:18][TestCase][INFO]8. Delete a non-existing user
+[02/25/2018 21:10:18][usersDeleteByID][ERROR]Call API failed
+Error while calling url: http://10.27.18.140:8080/api/users/13
+Error Code: 500
+Response: {"timestamp":1519610994517,"status":500,"error":"Internal Server Error","exception":"org.springframework.dao.EmptyResultDataAccessException","message":"No class com.alikian.domain.User entity with id 13 exists!","path":"/api/users/13"}
+[02/25/2018 21:10:18][TestCase][SUCCESS]Cannot find User ID 13.
+
+[02/25/2018 21:10:18][TestCase][INFO]9. Update a non-existing user
+[02/25/2018 21:10:18][usersUpdate][SUCCESS]Call API Succeeded
+[02/25/2018 21:10:18][TestCase][ERROR]User ID 13 does not exist. API did not return error.
+
+[02/25/2018 21:10:18][TestCase][INFO]10. Get an existing user
+[02/25/2018 21:10:18][usersGetOne][SUCCESS]Call API Succeeded
+[02/25/2018 21:10:18][TestCase][SUCCESS]User ID 8 found.
+
+[02/25/2018 21:10:18][TestCase][INFO]11. Update an existing user
+[02/25/2018 21:10:18][usersUpdate][SUCCESS]Call API Succeeded
+[02/25/2018 21:10:18][TestCase][SUCCESS]User ID 1 updated.
+

@@ -1,0 +1,53 @@
+[02/25/2018 21:10:37][TestCase][INFO]1. Get all photos
+[02/25/2018 21:10:37][photosGetAll][ERROR]Call API failed
+Error while calling url: http://10.27.18.140:8080/api/photos
+Error Code: 405
+Response: {"timestamp":1519611013677,"status":405,"error":"Method Not Allowed","exception":"org.springframework.web.HttpRequestMethodNotSupportedException","message":"Request method 'GET' not supported","path":"/api/photos"}
+[02/25/2018 21:10:37][TestCase][ERROR]API call returned error.
+
+[02/25/2018 21:10:37][TestCase][INFO]2. Create new photo without specifying Photo ID and Album ID
+[02/25/2018 21:10:37][photosCreate][INFO]Call API Succeeded
+[02/25/2018 21:10:37][TestCase][ERROR]Photo ID 5001 is created but not associated with any album.
+
+[02/25/2018 21:10:37][TestCase][INFO]3. Create new photo for existing album, let the system set Photo ID
+[02/25/2018 21:10:37][albumsGetAll][INFO]Call API Succeeded
+[02/25/2018 21:10:37][photosCreate][INFO]Call API Succeeded
+[02/25/2018 21:10:37][TestCase][SUCCESS]Photo ID 5002 created for Album 37.
+
+[02/25/2018 21:10:37][TestCase][INFO]4. Delete an existing photo
+[02/25/2018 21:10:37][photosDeleteByID][INFO]Call API Succeeded
+[02/25/2018 21:10:37][albumsGetAlbumPhotos][INFO]Call API Succeeded
+[02/25/2018 21:10:37][TestCase][SUCCESS]Photo ID 5002 deleted.
+
+[02/25/2018 21:10:37][TestCase][INFO]5. Get a non-existing photo
+[02/25/2018 21:10:37][photosGetOne][INFO]Call API Succeeded
+[02/25/2018 21:10:37][TestCase][ERROR]Cannot find Photo ID 5002. API did not return error.
+
+[02/25/2018 21:10:37][TestCase][INFO]6. Delete a non-existing photo
+[02/25/2018 21:10:37][photosDeleteByID][ERROR]Call API failed
+Error while calling url: http://10.27.18.140:8080/api/photos/5002
+Error Code: 500
+Response: {"timestamp":1519611014059,"status":500,"error":"Internal Server Error","exception":"org.springframework.dao.EmptyResultDataAccessException","message":"No class com.alikian.domain.Photo entity with id 5002 exists!","path":"/api/photos/5002"}
+[02/25/2018 21:10:37][TestCase][SUCCESS]Cannot find Photo ID 5002.
+
+[02/25/2018 21:10:37][TestCase][INFO]7. Update a non-existing photo
+[02/25/2018 21:10:37][photosUpdate][INFO]Call API Succeeded
+[02/25/2018 21:10:37][TestCase][ERROR]Photo ID 5002 does not exist. API did not return error.
+
+[02/25/2018 21:10:37][TestCase][INFO]8. Create new photo with specific ID, and the ID does not exist in system
+[02/25/2018 21:10:37][photosCreate][INFO]Call API Succeeded
+[02/25/2018 21:10:37][responseCheck][ERROR]id value 5004 in response does not match the value 5002 in request.
+[02/25/2018 21:10:37][TestCase][ERROR]Response check returned error.
+
+[02/25/2018 21:10:37][TestCase][INFO]9. Create new photo with specific ID, and the ID already exists in system
+[02/25/2018 21:10:37][photosCreate][INFO]Call API Succeeded
+[02/25/2018 21:10:37][TestCase][ERROR]Photo ID 5004 already exists, but API did not return error.
+
+[02/25/2018 21:10:37][TestCase][INFO]10. Get an existing photo
+[02/25/2018 21:10:38][photosGetOne][INFO]Call API Succeeded
+[02/25/2018 21:10:38][TestCase][SUCCESS]Photo ID 5004 found.
+
+[02/25/2018 21:10:38][TestCase][INFO]11. Update an existing photo
+[02/25/2018 21:10:38][photosUpdate][INFO]Call API Succeeded
+[02/25/2018 21:10:38][TestCase][SUCCESS]Photo ID 5004 updated.
+
