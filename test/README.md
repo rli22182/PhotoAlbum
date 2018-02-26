@@ -1,30 +1,33 @@
 # Testing the PhotoAlbum Project
 
-Testing code for the PhotoAlbum project
 
 ### Prerequisites
 
-Python 2.7
-JDK
-Maven
+* Python 2.7
+* JDK
+* Maven
+
 
 ## Running the tests
 
-Open Terminal, navigate to your target folder to store the project files
+* Open Terminal, navigate to your target folder to store the project files
+* Execute below commands:
 ```
 $ git clone https://github.com/rli22182/PhotoAlbum.git
 $ cd PhotoAlbum
 $ mvn clean package
 $ java -jar target/photoalbum-0.0.1-SNAPSHOT.jar
 ```
-Check the PhotoAlbum service is accessible via URL http://localhost:8080, or http://<your_machine_ip>:8080
-Update the baseURL in PhotoAlbum/test/TestCases/config.json
+* Check the PhotoAlbum service is accessible via URL http://localhost:8080, or http://<your_machine_ip>:8080
+* Update the baseURL in PhotoAlbum/test/TestCases/config.json
+* Execute below commands to run API test:
 ```
 $ python test/TestCases/UserTestCases.py
 $ python test/TestCases/AlbumTestCases.py
 $ python test/TestCases/PhotoTestCases.py
 ```
-Test log files will be generated under the TestCases folder with SUCCESS/ERROR info
+* Test log files will be generated under the TestCases folder with SUCCESS/ERROR info
+
 
 ### Known failed cases
 
