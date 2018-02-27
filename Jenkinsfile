@@ -8,7 +8,7 @@ pipeline {
         }
         stage('StartService') {
             steps {
-                sh 'java -jar target/photoalbum-0.0.1-SNAPSHOT.jar &'
+                sh 'photoalbum.sh start'
             }
         }
         stage('TestService') {
@@ -20,7 +20,7 @@ pipeline {
         }
         stage('TearDown') {
             steps {
-                sh 'pkill -f photoalbum'
+                sh 'photoalbum.sh stop'
             }
         }
     }
