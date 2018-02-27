@@ -8,6 +8,7 @@ pipeline {
         }
         stage('StartService') {
             steps {
+                sh 'chmod 777 ./photoalbum.sh'
                 sh './photoalbum.sh start'
             }
         }
