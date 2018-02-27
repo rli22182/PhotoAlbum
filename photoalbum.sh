@@ -44,6 +44,8 @@ elif [ $1 == "stop" ]; then
   echo "[`date '+%Y-%m-%d %H:%M:%S'`][INFO] Done! Please check log file: ${LOG} for details."
 elif [ $1 == "start" ]; then
   echo "Starting..."
+  mkdir -p $MPATH/logs
+  LOG=$MPATH/logs/photoalbum_`date +%Y-%m-%d`.log
   nohup java -jar target/${service}.jar >> $LOG 2>&1 < /dev/null &
   echo $! > ${service}.pid
   echo "[`date '+%Y-%m-%d %H:%M:%S'`][INFO] Done! Please check log file: ${LOG} for details."
