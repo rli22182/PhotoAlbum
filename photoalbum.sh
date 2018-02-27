@@ -50,7 +50,7 @@ elif [ $1 == "restart" ] || [ $1 == "start" ]; then
   LOG=$MPATH/logs/photoalbum_`date +%Y-%m-%d`.log
   kill_process $service >>${LOG} 2>&1
   echo "Starting..."
-  nohup java -jar /target/${service}.jar >> $LOG 2>&1 < /dev/null &
+  nohup java -jar target/${service}.jar >> $LOG 2>&1 < /dev/null &
   echo $! > ${service}.pid
   echo "[`date '+%Y-%m-%d %H:%M:%S'`][INFO] Done! Please check log file: ${LOG} for details."
 else
